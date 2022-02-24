@@ -9,55 +9,55 @@ class Form extends Component {
       isSaveButtonDisabled, onInputChange, onSaveButtonClick } = this.props;
     return (
       <form>
-        <label htmlFor="name-input">
+        <label htmlFor="name">
           <input
             type="text"
             data-testid="name-input"
-            name="name-input"
+            name="name"
             value={ cardName }
             onChange={ onInputChange }
           />
         </label>
-        <label htmlFor="description-input">
+        <label htmlFor="description">
           <textarea
             data-testid="description-input"
-            name="description-input"
+            name="description"
             value={ cardDescription }
             onChange={ onInputChange }
           />
         </label>
-        <label htmlFor="attr1-input">
+        <label htmlFor="attr1">
           <input
             type="number"
             data-testid="attr1-input"
-            name="attr1-input"
+            name="attr1"
             value={ cardAttr1 }
             onChange={ onInputChange }
           />
         </label>
-        <label htmlFor="attr2-input">
+        <label htmlFor="attr2">
           <input
             type="number"
             data-testid="attr2-input"
-            name="attr2-input"
+            name="attr2"
             value={ cardAttr2 }
             onChange={ onInputChange }
           />
         </label>
-        <label htmlFor="attr3-input">
+        <label htmlFor="attr3">
           <input
             type="number"
             data-testid="attr3-input"
-            name="attr3-input"
+            name="attr3"
             value={ cardAttr3 }
             onChange={ onInputChange }
           />
         </label>
-        <label htmlFor="image-input">
+        <label htmlFor="image">
           <input
             type="text"
             data-testid="image-input"
-            name="image-input"
+            name="image"
             value={ cardImage }
             onChange={ onInputChange }
           />
@@ -71,11 +71,11 @@ class Form extends Component {
           <option>raro</option>
           <option>muito raro</option>
         </select>
-        <label htmlFor="trunfo-input">
+        <label htmlFor="trunfo">
           <input
             type="checkbox"
             data-testid="trunfo-input"
-            name="trunfo-input"
+            name="trunfo"
             checked={ cardTrunfo }
             onChange={ onInputChange }
           />
