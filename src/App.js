@@ -25,7 +25,7 @@ class App extends React.Component {
     const value = type === 'checkbox' ? target.checked : target.value;
     this.setState({
       [name]: value,
-    }, () => this.isSaveButtonDisabled());
+    }, this.isSaveButtonDisabled);
   }
 
   isSaveButtonDisabled = () => {
@@ -57,10 +57,10 @@ class App extends React.Component {
     event.preventDefault();
     const {
       name, description, attr1, attr2, attr3,
-      rare, image, trunfo, newState } = this.state;
+      rare, image, trunfo, newState,
+    } = this.state;
 
-    // eslint-disable-next-line no-unused-expressions
-    trunfo === true && this.setState({ hasTrunfo: true });
+    if (trunfo === true) { this.setState({ hasTrunfo: true }); }
 
     newState.push({
       name,
