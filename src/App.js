@@ -1,3 +1,4 @@
+/* eslint-disable arrow-body-style */
 import React from 'react';
 import Card from './components/Card';
 import Form from './components/Form';
@@ -89,7 +90,7 @@ class App extends React.Component {
   render() {
     const {
       name, description, attr1, attr2, attr3,
-      rare, image, trunfo, hasTrunfo, isSaveButtonDisabled } = this.state;
+      rare, image, trunfo, hasTrunfo, isSaveButtonDisabled, newState } = this.state;
     return (
       <div>
         <h1>Tryunfo</h1>
@@ -117,6 +118,23 @@ class App extends React.Component {
           cardImage={ image }
           cardTrunfo={ trunfo }
         />
+        <section className="cards-container">
+          {newState.map((card) => {
+            return (
+              <Card
+                key={ card.name }
+                cardName={ card.name }
+                cardDescription={ card.description }
+                cardAttr1={ card.attr1 }
+                cardAttr2={ card.attr2 }
+                cardAttr3={ card.attr3 }
+                cardRare={ card.rare }
+                cardImage={ card.image }
+                cardTrunfo={ card.trunfo }
+              />
+            );
+          })}
+        </section>
       </div>
     );
   }
