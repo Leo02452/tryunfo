@@ -115,8 +115,4 @@ Form.propTypes = {
   onSaveButtonClick: PropTypes.func.isRequired,
 };
 
-// Form.defaultProps = {
-//   cardRare: 'normal',
-// };
-
 export default Form;

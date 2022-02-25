@@ -15,13 +15,13 @@ class App extends React.Component {
       image: '',
       trunfo: false,
       isSaveButtonDisabled: true,
+      newState: [],
     };
   }
 
   onInputChange = ({ target }) => {
     const { name, type } = target;
     const value = type === 'checkbox' ? target.checked : target.value;
-    console.log(typeof target.value);
     this.setState({
       [name]: value,
     }, () => this.isSaveButtonDisabled());
@@ -52,6 +52,37 @@ class App extends React.Component {
     }
   }
 
+  onSaveButtonClick = (event) => {
+    event.preventDefault();
+    const {
+      name, description, attr1, attr2, attr3,
+      rare, image, trunfo, newState } = this.state;
+
+    newState.push({
+      name,
+      description,
+      attr1,
+      attr2,
+      attr3,
+      rare,
+      image,
+      trunfo,
+    });
+    console.log(newState);
+
+    this.setState({
+      name: '',
+      description: '',
+      attr1: 0,
+      attr2: 0,
+      attr3: 0,
+      rare: 'normal',
+      image: '',
+      trunfo: false,
+      isSaveButtonDisabled: true,
+    });
+  }
+
   render() {
     const {
       name, description, attr1, attr2, attr3,
@@ -70,6 +101,7 @@ class App extends React.Component {
           cardTrunfo={ trunfo }
           onInputChange={ this.onInputChange }
           isSaveButtonDisabled={ isSaveButtonDisabled }
+          onSaveButtonClick={ this.onSaveButtonClick }
         />
         <Card
           cardName={ name }
