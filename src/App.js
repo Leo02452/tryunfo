@@ -1,4 +1,3 @@
-/* eslint-disable arrow-body-style */
 import React from 'react';
 import Card from './components/Card';
 import Form from './components/Form';
@@ -87,6 +86,11 @@ class App extends React.Component {
     });
   }
 
+  deleteCard = () => {
+    // apagar o objeto exato no estado de acordo com o event.target
+    // verificar valor de hastrunfo e habilitar botão, se preciso for
+  }
+
   render() {
     const {
       name, description, attr1, attr2, attr3,
@@ -119,10 +123,9 @@ class App extends React.Component {
           cardTrunfo={ trunfo }
         />
         <section className="cards-container">
-          {newState.map((card) => {
-            return (
+          {newState.map((card) => (
+            <div key={ card.name } className="card-container">
               <Card
-                key={ card.name }
                 cardName={ card.name }
                 cardDescription={ card.description }
                 cardAttr1={ card.attr1 }
@@ -132,8 +135,14 @@ class App extends React.Component {
                 cardImage={ card.image }
                 cardTrunfo={ card.trunfo }
               />
-            );
-          })}
+              <button
+                data-testid="delete-button"
+                type="button"
+                onClick={ this.deleteCard }
+              >
+                Excluir
+              </button>
+            </div>))}
         </section>
       </div>
     );
