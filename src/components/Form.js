@@ -10,6 +10,7 @@ class Form extends Component {
     return (
       <form>
         <label htmlFor="name">
+          Nome:
           <input
             type="text"
             data-testid="name-input"
@@ -19,6 +20,7 @@ class Form extends Component {
           />
         </label>
         <label htmlFor="description">
+          Descrição
           <textarea
             data-testid="description-input"
             name="description"
@@ -27,6 +29,7 @@ class Form extends Component {
           />
         </label>
         <label htmlFor="attr1">
+          Atributo 1
           <input
             type="number"
             data-testid="attr1-input"
@@ -36,6 +39,7 @@ class Form extends Component {
           />
         </label>
         <label htmlFor="attr2">
+          Atributo 2
           <input
             type="number"
             data-testid="attr2-input"
@@ -45,6 +49,7 @@ class Form extends Component {
           />
         </label>
         <label htmlFor="attr3">
+          Atributo 3
           <input
             type="number"
             data-testid="attr3-input"
@@ -54,6 +59,7 @@ class Form extends Component {
           />
         </label>
         <label htmlFor="image">
+          Imagem
           <input
             type="text"
             data-testid="image-input"
@@ -66,10 +72,11 @@ class Form extends Component {
           data-testid="rare-input"
           value={ cardRare }
           onChange={ onInputChange }
+          name="rare"
         >
-          <option>normal</option>
-          <option>raro</option>
-          <option>muito raro</option>
+          <option value="normal">normal</option>
+          <option value="raro">raro</option>
+          <option value="muito raro">muito raro</option>
         </select>
         <label htmlFor="trunfo">
           <input
@@ -107,5 +114,9 @@ Form.propTypes = {
   onInputChange: PropTypes.func.isRequired,
   onSaveButtonClick: PropTypes.func.isRequired,
 };
+
+// Form.defaultProps = {
+//   cardRare: 'normal',
+// };
 
 export default Form;
