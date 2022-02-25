@@ -14,6 +14,7 @@ class App extends React.Component {
       rare: 'normal',
       image: '',
       trunfo: false,
+      hasTrunfo: false,
       isSaveButtonDisabled: true,
       newState: [],
     };
@@ -58,6 +59,9 @@ class App extends React.Component {
       name, description, attr1, attr2, attr3,
       rare, image, trunfo, newState } = this.state;
 
+    // eslint-disable-next-line no-unused-expressions
+    trunfo === true && this.setState({ hasTrunfo: true });
+
     newState.push({
       name,
       description,
@@ -68,7 +72,6 @@ class App extends React.Component {
       image,
       trunfo,
     });
-    console.log(newState);
 
     this.setState({
       name: '',
@@ -86,7 +89,7 @@ class App extends React.Component {
   render() {
     const {
       name, description, attr1, attr2, attr3,
-      rare, image, trunfo, isSaveButtonDisabled } = this.state;
+      rare, image, trunfo, hasTrunfo, isSaveButtonDisabled } = this.state;
     return (
       <div>
         <h1>Tryunfo</h1>
@@ -99,6 +102,7 @@ class App extends React.Component {
           cardRare={ rare }
           cardImage={ image }
           cardTrunfo={ trunfo }
+          hasTrunfo={ hasTrunfo }
           onInputChange={ this.onInputChange }
           isSaveButtonDisabled={ isSaveButtonDisabled }
           onSaveButtonClick={ this.onSaveButtonClick }
