@@ -16,7 +16,7 @@ class App extends React.Component {
       trunfo: false,
       hasTrunfo: false,
       isSaveButtonDisabled: true,
-      newState: [],
+      cardList: [],
     };
   }
 
@@ -57,12 +57,12 @@ class App extends React.Component {
     event.preventDefault();
     const {
       name, description, attr1, attr2, attr3,
-      rare, image, trunfo, newState,
+      rare, image, trunfo, cardList,
     } = this.state;
 
     if (trunfo === true) { this.setState({ hasTrunfo: true }); }
 
-    newState.push({
+    cardList.push({
       name,
       description,
       attr1,
@@ -76,9 +76,9 @@ class App extends React.Component {
     this.setState({
       name: '',
       description: '',
-      attr1: 0,
-      attr2: 0,
-      attr3: 0,
+      attr1: '0',
+      attr2: '0',
+      attr3: '0',
       rare: 'normal',
       image: '',
       trunfo: false,
@@ -86,15 +86,21 @@ class App extends React.Component {
     });
   }
 
-  deleteCard = () => {
-    // apagar o objeto exato no estado de acordo com o event.target
-    // verificar valor de hastrunfo e habilitar botão, se preciso for
+  deleteCard = ({ target }) => {
+    const cardName = target.value;
+    const { cardList } = this.state;
+    const newCardList = cardList.filter((card) => card.name !== cardName);
+    const hasTrunfo = newCardList.some((card) => card.trunfo);
+    this.setState({
+      cardList: newCardList,
+      hasTrunfo,
+    });
   }
 
   render() {
     const {
       name, description, attr1, attr2, attr3,
-      rare, image, trunfo, hasTrunfo, isSaveButtonDisabled, newState } = this.state;
+      rare, image, trunfo, hasTrunfo, isSaveButtonDisabled, cardList } = this.state;
     return (
       <div>
         <h1>Tryunfo</h1>
@@ -123,7 +129,7 @@ class App extends React.Component {
           cardTrunfo={ trunfo }
         />
         <section className="cards-container">
-          {newState.map((card) => (
+          {cardList.map((card) => (
             <div key={ card.name } className="card-container">
               <Card
                 cardName={ card.name }
@@ -138,6 +144,7 @@ class App extends React.Component {
               <button
                 data-testid="delete-button"
                 type="button"
+                value={ card.name }
                 onClick={ this.deleteCard }
               >
                 Excluir
