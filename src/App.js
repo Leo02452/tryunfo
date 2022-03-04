@@ -102,6 +102,7 @@ class App extends React.Component {
     });
   }
 
+  // lógica da função montada com a ajuda do código da Laís Nametala, T19A
   handleFilter = ({ target }) => {
     const { name, type } = target;
     const value = type === 'checkbox' ? target.checked : target.value;
